@@ -197,7 +197,10 @@ def handle_message(event):
         mongodb.delete_user_stock_fountion(stock=usespeak[2:])
         line_bot_api.push_message(uid, TextSendMessage(usespeak+'已經刪除成功'))
         return 0
-        
+    elif re.match('測試',usespeak): # 刪除存在資料庫裡面的股票
+        #mongodb.delete_user_stock_fountion(stock=usespeak[2:])
+        line_bot_api.push_message(uid, TextSendMessage(usespeak+'=測試成功'))
+        return 0        
     elif re.match('[0-9]{4}',usespeak): # 如果只有給四個數字就判斷是股票查詢
         line_bot_api.push_message(uid, TextSendMessage('稍等一下, 雲端運算中...'))
         ######### 開始請求網站，報價 ##########
